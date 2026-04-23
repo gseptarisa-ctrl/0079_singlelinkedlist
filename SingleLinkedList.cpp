@@ -40,7 +40,27 @@ public:
             START = nodeBaru;
             return;
         }
-
-
         
+        Node *previous = START;
+        Node *current = START;
+
+        while (current != NULL && nim > current->noMhs) 
+        {
+            if (nim == current->noMhs) 
+            {
+                cout << "\nDuplikasi noMhs tidak diijjinkan\n";
+                return; 
+            }
+            previous = current;
+            current = current->next;
+        }
+
+        nodeBaru->next = current;
+        previous->next = nodeBaru;
     }
+
+    bool listEmpty() 
+    {
+        return START == NULL;   
+    }
+
